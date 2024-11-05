@@ -5,7 +5,7 @@
 ## Deliverables
 
 - _When the app first loads_, display a tile for each hog in the
-  `porker_data.js` file. In the tile, display the **name** and **image** for
+  `porker_data.js` Afile. In the tile, display the **name** and **image** for
   each hog.
 - _When the user clicks on the hog tile_, display the other details about the
   hog (its **specialty**, **weight**, **greased**, and **highest medal

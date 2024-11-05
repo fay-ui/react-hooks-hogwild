@@ -1,18 +1,18 @@
-import React from "react";
-import piggy from "../assets/porco.png";
 
-const Nav = () => {
-	return (
-		<div className="navWrapper">
-			<span className="headerText">HogWild</span>
-			<div className="TwirlyPig">
-				<img src={piggy} className="App-logo" alt="piggy" />
-			</div>
-			<span className="normalText">
-				A React App for County Fair Hog Fans
-			</span>
-		</div>
-	);
-};
+import React from 'react';
+
+function Nav({ setShowGreased, setSortOption }) {
+  return (
+    <div>
+      <button onClick={() => setShowGreased(prev => !prev)}>
+        {`Show Greased Hogs`}
+      </button>
+      <select onChange={(e) => setSortOption(e.target.value)}>
+        <option value="name">Sort by Name</option>
+        <option value="weight">Sort by Weight</option>
+      </select>
+    </div>
+  );
+}
 
 export default Nav;

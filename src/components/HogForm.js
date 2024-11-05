@@ -1,44 +1,77 @@
-// src/components/HogForm.js
-import React, { useState } from 'react';
-
-function HogForm({ setHogsData }) {
-  const [name, setName] = useState('');
-  const [specialty, setSpecialty] = useState('');
-  const [greased, setGreased] = useState(false);
-  const [weight, setWeight] = useState('');
-  const [medal, setMedal] = useState('');
-  const [image, setImage] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newHog = {
-      name,
-      specialty,
-      greased,
-      weight: parseFloat(weight),
-      "highest medal achieved": medal,
-      image,
+// HogForm.js
+import React, { useState } from "react";
+function HogForm({ addHog }) {
+    const [name, setName] = useState("");
+    const [image, setImage] = useState("");
+    const [specialty, setSpecialty] = useState("");
+    const [weight, setWeight] = useState("");
+    const [greased, setGreased] = useState(false);
+    const [highestMedal, setHighestMedal] = useState("");
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newHog = {
+            name,
+            image,
+            specialty,
+            weight: parseFloat(weight),
+            greased,
+            "highest medal achieved": highestMedal,
+        };
+        addHog(newHog);
+        // Clear form after submission
+        setName("");
+        setImage("");
+        setSpecialty("");
+        setWeight("");
+        setGreased(false);
+        setHighestMedal("");
     };
-    setHogsData(prevHogs => [...prevHogs, newHog]);
-    setName('');
-    setSpecialty('');
-    setGreased(false);
-    setWeight('');
-    setMedal('');
-    setImage('');
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input value={name} onChange={e => setName(e.target.value)} placeholder="Name" required />
-      <input value={specialty} onChange={e => setSpecialty(e.target.value)} placeholder="Specialty" required />
-      <input type="checkbox" checked={greased} onChange={e => setGreased(e.target.checked)} /> Greased
-      <input type="number" value={weight} onChange={e => setWeight(e.target.value)} placeholder="Weight" required />
-      <input value={medal} onChange={e => setMedal(e.target.value)} placeholder="Highest Medal" required />
-      <input value={image} onChange={e => setImage(e.target.value)} placeholder="Image URL" required />
-      <button type="submit">Add Hog</button>
-    </form>
-  );
+    return (
+        <form onSubmit={handleSubmit} className="hog-form">
+            <h3>Add a New Hog</h3>
+            <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+            />
+            <input
+                type="text"
+                placeholder="Image URL"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                required
+            />
+            <input
+                type="text"
+                placeholder="Specialty"
+                value={specialty}
+                onChange={(e) => setSpecialty(e.target.value)}
+            />
+            <input
+                type="number"
+                placeholder="Weight"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                required
+            />
+            <label>
+                Greased:
+                <input
+                    type="checkbox"
+                    checked={greased}
+                    onChange={(e) => setGreased(e.target.checked)}
+                />
+            </label>
+            <input
+                type="text"
+                placeholder="Highest Medal Achieved"
+                value={highestMedal}
+                onChange={(e) => setHighestMedal(e.target.value)}
+            />
+            <button type="submit">Add Hog</button>
+        </form>
+    );
 }
-
 export default HogForm;

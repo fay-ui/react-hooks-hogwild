@@ -1,4 +1,4 @@
-// src/hogs.js
+
 const hogs = [
     {
       name: "Babe",
@@ -8,7 +8,7 @@ const hogs = [
       "highest medal achieved": "bronze",
       image: "https://raw.githubusercontent.com/learn-co-curriculum/react-hooks-hogwild/master/public/images/babe.jpg",
     },
-    // ... (other hog entries)
+
     {
       name: "Leggo My Eggo",
       specialty: "Babysitting",
